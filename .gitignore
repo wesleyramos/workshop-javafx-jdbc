@@ -31,3 +31,5 @@ nbbuild/
 dist/
 nbdist/
 out/
+
+.idea
