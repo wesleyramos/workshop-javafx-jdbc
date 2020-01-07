@@ -1,20 +1,20 @@
 package model.services;
 
 import model.dao.DaoFactory;
-import model.dao.Seller;
-import model.entities.Department;
+import model.dao.SellerDao;
+import model.entities.Seller;
 
 import java.util.List;
 
-public class DepartmentService {
+public class SellerService {
 
-    private Seller dao = DaoFactory.createDepartmentDao();
+    private SellerDao dao = DaoFactory.createSellerDao();
 
-    public List<Department> findAll() {
+    public List<Seller> findAll() {
         return dao.findAll();
     }
 
-    public void saveOrUpdate(Department obj) {
+    public void saveOrUpdate(Seller obj) {
         if (null == obj.getId()) {
             dao.insert(obj);
         } else {
@@ -22,7 +22,7 @@ public class DepartmentService {
         }
     }
 
-    public void remove(Department obj) {
+    public void remove(Seller obj) {
         dao.deleteById(obj.getId());
     }
 

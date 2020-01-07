@@ -11,10 +11,10 @@ import java.util.List;
 import db.DB;
 import db.DbException;
 import db.DbIntegrityException;
-import model.dao.DepartmentDao;
+import model.dao.Seller;
 import model.entities.Department;
 
-public class DepartmentDaoJDBC implements DepartmentDao {
+public class DepartmentDaoJDBC implements Seller {
 
 	private Connection conn;
 	
