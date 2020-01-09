@@ -10,13 +10,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.entities.Seller;
 import model.services.SellerService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
@@ -154,7 +159,7 @@ public class SellerListController implements Initializable, DataChangeListener {
     }
 
     private void createDialogForm(Seller obj, String absoluteName, Stage parentStage) {
-    /*    try {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
             Pane pane = loader.load();
 
@@ -165,7 +170,7 @@ public class SellerListController implements Initializable, DataChangeListener {
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Enter department data");
+            dialogStage.setTitle("Enter seller data");
             dialogStage.setScene(new Scene(pane));
             dialogStage.setResizable(false);
             dialogStage.initOwner(parentStage);
@@ -173,7 +178,7 @@ public class SellerListController implements Initializable, DataChangeListener {
             dialogStage.showAndWait();
         } catch (IOException ex) {
             Alerts.showAlert("IOException", "Error loading view", ex.getMessage(), Alert.AlertType.ERROR);
-        }*/
+        }
     }
 
     @Override
