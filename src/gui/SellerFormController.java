@@ -19,6 +19,7 @@ import model.services.DepartmentService;
 import model.services.SellerService;
 
 import java.net.URL;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -122,6 +123,26 @@ public class SellerFormController implements Initializable {
         }
         obj.setName(txtName.getText());
 
+
+        if (txtEmail.getText() == null || txtEmail.getText().trim().isEmpty()) {
+            exception.addError("email", "Field can't be empty");
+        }
+        obj.setEmail(txtEmail.getText());
+
+        if (dpBirthDate.getValue() == null) {
+            exception.addError("birthDate", "Field can't be empty");
+        } else {
+            Instant instant = Instant.from(dpBirthDate.getValue().atStartOfDay(ZoneId.systemDefault()));
+            obj.setBirthDate(Date.from(instant));
+        }
+
+        if (txtBaseSalary.getText() == null || txtBaseSalary.getText().trim().isEmpty()) {
+            exception.addError("baseSalary", "Field can't be empty");
+        }
+        obj.setBaseSalary(Utils.tryParseToDouble(txtBaseSalary.getText()));
+
+        obj.setDepartment(comboBoxDepartment.getValue());
+
         if (exception.getErrors().size() > 0) {
             throw exception;
         }
@@ -195,7 +216,28 @@ public class SellerFormController implements Initializable {
 
         if (fields.contains("name")) {
             lblErrorName.setText(errors.get("name"));
+        } else {
+            lblErrorName.setText("");
         }
+
+        if (fields.contains("email")) {
+            lblErrorEmail.setText(errors.get("email"));
+        } else {
+            lblErrorEmail.setText("");
+        }
+
+        if (fields.contains("baseSalary")) {
+            lblErrorBaseSalary.setText(errors.get("baseSalary"));
+        } else {
+            lblErrorBaseSalary.setText("");
+        }
+
+        if (fields.contains("birthDate")) {
+            lblErrorBirthDate.setText(errors.get("birthDate"));
+        } else {
+            lblErrorBirthDate.setText("");
+        }
+
     }
 
 }
